@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 
 app.use(cors()); // Allow all origins
-app.use(express.static(path.join(__dirname, "public"))); // Serve static files from "public"
+app.use(express.static(path.join(__dirname))); // Serve static files from the root directory
 
 // Endpoint to fetch odds from API
 app.get('/odds', async (req, res) => {
@@ -24,7 +24,7 @@ app.get('/odds', async (req, res) => {
 
 // Serve index.html (or the main HTML file)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "UFC_Genie_Odds.html"));
+    res.sendFile(path.join(__dirname, "UFC_Genie_Odds.html"));
 });
 
 // Start server
