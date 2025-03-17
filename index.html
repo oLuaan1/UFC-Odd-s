@@ -57,29 +57,29 @@
     </div>
     
     <script>
-        async function fetchOdds() {
-            try {
-                const response = await fetch('http://localhost:3000/odds');
-                const data = await response.json();
-                const oddsList = document.getElementById('odds');
-                oddsList.innerHTML = '';
-                
-                data.forEach(match => {
-                    match.bookmakers.forEach(bookmaker => {
-                        if (['fanduel', 'draftkings', 'bet365'].includes(bookmaker.key.toLowerCase())) {
-                            const odds = bookmaker.markets?.[0]?.outcomes || [];
-                            if (odds.length > 0) {
-                                const li = document.createElement('li');
-                                li.textContent = `${match.sport_title} - ${match.home_team} vs ${match.away_team} (${bookmaker.title}): ${odds[0].name} @ ${odds[0].price}`;
-                                oddsList.appendChild(li);
-                            }
-                        }
-                    });
-                });
-            } catch (error) {
-                console.error('Error fetching odds:', error);
-            }
-        }
+async function fetchOdds() {
+    try {
+        const response = await fetch('https://ufc-odd-s.onrender.com/odds'); // Updated URL
+        const data = await response.json();
+        const oddsList = document.getElementById('odds');
+        oddsList.innerHTML = '';
+
+        data.forEach(match => {
+            match.bookmakers.forEach(bookmaker => {
+                if (['fanduel', 'draftkings', 'bet365'].includes(bookmaker.key.toLowerCase())) {
+                    const odds = bookmaker.markets?.[0]?.outcomes || [];
+                    if (odds.length > 0) {
+                        const li = document.createElement('li');
+                        li.textContent = `${match.sport_title} - ${match.home_team} vs ${match.away_team} (${bookmaker.title}): ${odds[0].name} @ ${odds[0].price}`;
+                        oddsList.appendChild(li);
+                    }
+                }
+            });
+        });
+    } catch (error) {
+        console.error('Error fetching odds:', error);
+    }
+}
 
         function autoScroll() {
             const container = document.getElementById('widget-container');

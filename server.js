@@ -24,11 +24,11 @@ app.get('/odds', async (req, res) => {
 
 // Serve index.html (or the main HTML file)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, "UFC_Genie_Odds.html"));
+    res.sendFile(path.join(__dirname, "index.html")); // Corrected file path
 });
 
 // Start server
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
