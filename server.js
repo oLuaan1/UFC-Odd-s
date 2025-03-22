@@ -20,11 +20,8 @@ app.get("/odds", async (req, res) => {
     }
 
     try {
-        const response = await fetch(`https://api.sportsgameodds.com/v1/odds?league=UFC&apikey=${API_KEY}`, {
-            headers: {
-                'Authorization': `Bearer ${API_KEY}`
-            }
-        });
+        console.log(`Fetching odds with API_KEY: ${API_KEY}`);
+        const response = await fetch(`https://api.sportsgameodds.com/v1/odds?league=UFC&apikey=${API_KEY}`);
         const data = await response.json();
 
         console.log("SGO API Response:", data); // Debug API response
