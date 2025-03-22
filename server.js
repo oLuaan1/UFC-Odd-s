@@ -8,9 +8,6 @@ const PORT = process.env.PORT || 10000;
 
 const API_KEY = process.env.API_KEY; // ✅ Read API key from environment
 
-// 🔍 Debugging: Log API Key (REMOVE AFTER TESTING)
-console.log("🔑 API_KEY:", API_KEY ? "Loaded Successfully" : "MISSING!");
-
 app.get("/odds", async (req, res) => {
     if (!API_KEY) {
         console.error("❌ API Key is missing!");

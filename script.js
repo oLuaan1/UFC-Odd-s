@@ -1,4 +1,4 @@
-fetch('https://ufc-odd-s.onrender.com/odds')
+fetch('/odds')
     .then(response => response.text())  // Change to .text() to see the raw data
     .then(data => {
         console.log("Raw API Response:", data);
@@ -11,7 +11,7 @@ fetch('https://ufc-odd-s.onrender.com/odds')
     })
     .catch(error => console.error("Fetch Error:", error));
 
-fetch('https://ufc-odd-s.onrender.com/odds')
+fetch('/odds')
     .then(response => response.json())
     .then(data => {
         console.log("API Response:", data); // Debugging
