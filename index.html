@@ -61,6 +61,11 @@ async function fetchOdds() {
     try {
         const response = await fetch('https://ufc-odd-s.onrender.com/odds'); // Updated URL
         const data = await response.json();
+
+        if (!Array.isArray(data)) {
+            throw new Error('Invalid data format');
+        }
+
         const oddsList = document.getElementById('odds');
         oddsList.innerHTML = '';
 

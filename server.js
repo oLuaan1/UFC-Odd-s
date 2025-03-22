@@ -1,4 +1,6 @@
-require("dotenv").config(); // Only needed for local development
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config(); // Only needed for local development
+}
 
 const express = require("express");
 const fetch = require("node-fetch");
